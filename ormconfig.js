@@ -34,7 +34,10 @@ module.exports = {
   url,
   extra: isProd
     ? {
-        ssl: true,
+        ssl: {
+          ca: process.env.SSL_CERT,
+          rejectUnauthorized: false,
+        },
       }
     : undefined,
   synchronize: false,
