@@ -32,14 +32,12 @@ module.exports = {
   },
   // host: isProd ? BASE_URL : 'localhost',
   url,
-  extra: isProd
-    ? {
-        ssl: {
-          ca: process.env.SSL_CERT,
-          rejectUnauthorized: false,
-        },
-      }
-    : undefined,
+  extra: {
+    ssl: isProd || {
+      ca: process.env.SSL_CERT,
+      rejectUnauthorized: false,
+    },
+  },
   synchronize: false,
   logging: true,
   // port: 5432,
