@@ -151,9 +151,6 @@ export default {
         const { id, usr_id, tools, type, type_obs, zone_id, ...rest } =
           req.body;
         const event = (await getRepository(Event).findOne({ where: { id } }));
-<<<<<<< HEAD
-        console.log(event?.payload && JSON.parse(event.payload).codigo || id,)
-=======
         console.log({
           usr_id,
           oc_id: event?.payload && JSON.parse(event.payload).codigo || "",
@@ -162,7 +159,6 @@ export default {
           desc: type_obs,
           ...rest,
         })
->>>>>>> ffb7065... feat: suport events router
         await api_server.post('/report/', {
           usr_id,
           oc_id: event?.payload && JSON.parse(event.payload).codigo || id,
