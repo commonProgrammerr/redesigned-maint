@@ -1,8 +1,25 @@
+import { IPush_Data } from '../controllers/event';
 import Event from '../models/Event';
 
-export type EventDTO = Omit<Event, 'enable' | 'updated_at' | 'zone_id'>
-export type EventFeedItem = Pick<Event, 'id' | 'type' | 'local' | 'piso'>
+export type EventDTO = Omit<Event, 'enable' | 'updated_at' | 'zone_id'>;
+export type EventFeedItem = Pick<Event, 'id' | 'type' | 'local' | 'piso'> & {
+  time?: string | null;
+};
 
+interface EventPayload {
+  codigoItemAgenda: number;
+  grupo: string; //'Administrador',
+  local_fisico: string; //'Aeroporto Internacional dos Guararapes',
+  local: string; //'Banheiro Masculino',
+  setor: string; //'Segundo ANDAR',
+  posicao: string; //'Corredor 001',
+  descricao: string; //'Limpar Piso',
+  dataeventoinicial: string; //'09/04/2022',
+  dataeventofinal: string; //'09/04/2022',
+  horaevento: string; //'18:15:00',
+  status: null;
+  timestamp: string;
+}
 
 export default {
   render(event: Event): EventDTO {
@@ -28,12 +45,26 @@ export default {
 
   feed(events: Event[]): EventFeedItem[] {
     return events.map((event) => {
+      const payload = JSON.parse(event.payload || '{}') as EventPayload;
+      const date_array = payload?.dataeventoinicial?.split('/');
+      const timestamp =
+        (event.type === 1)
+          ? event.created_at.toISOString()
+          : payload.timestamp ||
+          `${date_array[2]}-${date_array[1]}-${date_array[0]}T${payload.horaevento}.000-03:00`;
+
       return {
         id: event.id,
         local: event.local,
         piso: event.piso,
+<<<<<<< HEAD
         type: event.type
       }
+=======
+        type: event.type,
+        time: event.payload && timestamp,
+      };
+>>>>>>> a737ac3... feat: add create date index for events
     });
   }
 };
