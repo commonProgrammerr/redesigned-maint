@@ -35,7 +35,8 @@ export default {
       local_photo: event.local_photo,
       suport_type: event.suport_type,
       mac: event.mac,
-      tool: event.tool
+      tool: event.tool,
+      payload: event.payload
     };
   },
 
@@ -57,14 +58,9 @@ export default {
         id: event.id,
         local: event.local,
         piso: event.piso,
-<<<<<<< HEAD
-        type: event.type
-      }
-=======
         type: event.type,
         time: event.payload && timestamp,
       };
->>>>>>> a737ac3... feat: add create date index for events
     });
   }
 };
