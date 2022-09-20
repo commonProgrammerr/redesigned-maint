@@ -207,7 +207,7 @@ export default {
   push_notification(io: Server) {
     return async (req: Request, res: Response) => {
       try {
-        const { local, posicao, piso, type, zone_id, description, title } = req.query;
+        const { local, posicao, piso, type, zone_id, description } = req.query;
         if (!zone_id) {
           return res.status(400).json({
             type: 'INVALID_FIELD',
@@ -220,7 +220,6 @@ export default {
           banheiro: local,
           local: posicao,
           piso,
-          title,
           type,
           description
         });
