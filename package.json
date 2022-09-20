@@ -1,11 +1,7 @@
 {
   "name": "maint-api",
   "version": "0.12.01",
-  "description": "my first socket.io app",
   "dependencies": {
-    "@types/express": "^4.17.13",
-    "@types/node": "^16.11.7",
-    "@types/pg": "^8.6.2",
     "axios": "^0.24.0",
     "class-validator": "^0.13.2",
     "cross-env": "^7.0.3",
@@ -13,11 +9,9 @@
     "express-graphql": "^0.12.0",
     "graphql": "15",
     "graphql-query-complexity": "^0.11.0",
-    "mysql": "^2.18.1",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "socket.io": "^4.1.2",
-    "sqlite3": "^5.0.2",
     "ts-node": "^10.4.0",
     "ts-node-dev": "^1.1.8",
     "type-graphql": "^1.1.1",
@@ -36,6 +30,9 @@
     "teste": "echo teste"
   },
   "devDependencies": {
-    "body-parser": "^1.20.0"
+    "body-parser": "^1.20.0",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.11.7",
+    "@types/pg": "^8.6.2"
   }
 }
