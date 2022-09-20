@@ -1,3 +1,3 @@
 import { createConnection } from "typeorm";
-console.log("Start database connection whit ", process.env.NODE_ENV, " configuration")
+console.log(process.env.DATABASE_URL)
 createConnection();
